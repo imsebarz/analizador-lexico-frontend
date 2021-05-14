@@ -48,7 +48,7 @@ while(true){
       source: input,
     };
 
-    fetch("https://dry-savannah-46761.herokuapp.com/process", {
+    fetch("https://analizador-lexico-server.herokuapp.com/process", {
       method: "POST",
       mode: "cors",
       headers: { "Content-Type": "application/json" },
