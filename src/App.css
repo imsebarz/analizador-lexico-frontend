@@ -1,0 +1,130 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  margin: 2em auto;
+  width: 50%;
+  text-align: center;
+  color: #000b69;
+  font-size: 36px;
+  font-weight: 700;
+}
+
+h2 {
+  color: #000b69;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 4em;
+}
+
+textarea {
+  height: 180px;
+  margin-bottom: 2em;
+  resize: none;
+  border: solid 3px #000b69;
+  border-radius: 15px;
+  padding: 1em;
+  font-size: 14px;
+  outline: none;
+}
+
+textarea:focus {
+  border: #0012b6 3px solid;
+}
+
+.ejemplo-toggle {
+  cursor: pointer;
+  color: #000b69;
+  width: 100%;
+  text-align: right;
+  margin: -1em 0 2em 0;
+  font-family: "Ubuntu";
+  font-weight: 700;
+}
+
+.ejemplo-toggle:hover {
+  color: #0012b6;
+}
+
+button {
+  height: 2em;
+  width: 6em;
+  margin: auto;
+  padding: 0;
+  font-family: "M PLUS Rounded 1c";
+  font-weight: 700;
+  font-size: 18px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+.buttons {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 50%;
+}
+
+.reset-button {
+  color: #000b69;
+  background: #fff;
+}
+
+.submit-button {
+  color: #fff;
+  background: #000b69;
+}
+
+button:hover {
+  filter: brightness(1.4);
+}
+
+span {
+  font-size: 12px;
+  color: rgb(65, 65, 65);
+}
+
+.tokens-container {
+  width: 50%;
+  margin: auto;
+  margin-bottom: 5em;
+  display: flex;
+  flex-direction: column;
+}
+
+.token {
+  width: 100%;
+  margin: 0.5em auto;
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 15px 25px;
+  display: flex;
+  font-size: 18px;
+  justify-content: space-between;
+  font-family: "Ubuntu";
+  font-weight: 700;
+  border: solid 2px #000b69;
+}
+
+.illegal {
+  border: solid 2px #ce0000;
+}
+
+.token strong {
+  color: #000b69;
+}
+
+.token p {
+  font-weight: 300;
+}
