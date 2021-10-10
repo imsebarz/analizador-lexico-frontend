@@ -4,6 +4,8 @@ import Token from "./Token";
 
 function App() {
   const [tokens, setTokens] = useState([]);
+  const [tree, setTree] = useState("");
+  const [errors, setErrors] = useState([]);
   const [input, setInput] = useState("");
   const ejemplos = [
     `var cinco  = 5
@@ -42,20 +44,25 @@ while(true){
     setTokens([]);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const source = {
       source: input,
     };
-
-    fetch("https://analizador-lexico-server.herokuapp.com/process", {
-      method: "POST",
-      mode: "cors",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(source),
-    })
-      .then((response) => response.json())
-      .then((data) => setTokens(data.data));
+    const response = await fetch(
+      "https://analizador-lexico-server.herokuapp.com/process",
+      {
+        method: "POST",
+        mode: "cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(source),
+      }
+    );
+    const data = await response.json();
+    setErrors(data.errors);
+    setTree(JSON.stringify(data.program, null, 2));
+    setTokens(data.tokens);
+    console.log(tree);
   };
   return (
     <div className="App">
@@ -80,6 +87,24 @@ while(true){
           </button>
         </div>
       </form>
+      {tree ? (
+        <>
+          <h1>Arbol de Sintaxis abstracto</h1>
+          <textarea className="tree" value={tree} disabled />
+        </>
+      ) : (
+        ""
+      )}
+      {errors ? (
+        <>
+          <h1>Errores</h1>
+          {errors.map((error) => (
+            <div className="token illegal">{error}</div>
+          ))}
+        </>
+      ) : (
+        ""
+      )}
       <div className="tokens-container">
         <h2>
           Tokens <span>{`[${tokens.length}]`}</span>
